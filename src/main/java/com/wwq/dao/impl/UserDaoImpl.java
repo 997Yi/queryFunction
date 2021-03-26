@@ -20,4 +20,21 @@ public class UserDaoImpl implements UserDao {
         String sql = "select * from user";
         return JdbcUtil.query(sql, new User());
     }
+
+    @Override
+    public List<User> queryByName(User user) {
+        if (user.getName() == null){
+            return null;
+        }
+        String sql = "select * from user where ";
+        sql = sql + "name=\'" + user.getName() + "\'";
+        if (user.getGender() != null){
+            sql = sql + " and gender=\'" + user.getGender() + "\'";
+        }
+        if (user.getBirthday() != null){
+            sql = sql + " and birthday=\'" + user.getBirthday() + "\'";
+        }
+
+        return JdbcUtil.query(sql, new User());
+    }
 }
