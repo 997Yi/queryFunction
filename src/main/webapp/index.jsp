@@ -15,7 +15,7 @@
 <c:if test="${userList != null}">
     <h2>用户列表</h2>
     <c:forEach items="${userList}" var="user">
-        ${user.name} ${user.gender} ${user.birthday}
+        ${user.name} ${user.gender} ${user.birthday} ${user.telephone}<br>
     </c:forEach>
 </c:if>
 <c:if test="${userList == null}">

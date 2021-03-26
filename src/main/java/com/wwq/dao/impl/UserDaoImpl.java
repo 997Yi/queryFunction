@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
         }
         String sql = "select * from user where ";
         sql = sql + "name=\'" + user.getName() + "\'";
-        if (user.getGender() != null){
+        if (user.getGender() != null && !user.getGender().isEmpty()){
             sql = sql + " and gender=\'" + user.getGender() + "\'";
         }
         if (user.getBirthday() != null){

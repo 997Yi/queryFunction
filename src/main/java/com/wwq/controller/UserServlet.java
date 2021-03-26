@@ -30,7 +30,9 @@ public class UserServlet extends HttpServlet {
         String strDate = (String)request.getParameter("birthday");
         Date date = null;
         try {
-            date = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(strDate).getTime());
+            if (strDate != null && !strDate.isEmpty()){
+                date = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(strDate).getTime());
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -38,7 +40,7 @@ public class UserServlet extends HttpServlet {
 
         //查询数据
         List<User> userList = userService.queryByName(user);
-        if (!userList.isEmpty() || userList == null){
+        if (!userList.isEmpty() && userList != null){
             System.out.println(userList);
             request.setAttribute("userList", userList);
         }
